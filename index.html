@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" id="ThemeStylesheetLink" href="./css/themes/default.css">
+    <link rel="stylesheet" href="./css/themes/common.css">
+    <title>Theme Selector</title>
+</head>
+<body>
+
+
+   Choose a theme: 
+   <select id="themeSelect"> 
+        <option value="default"> Default (Light) </option>
+        <option value="dark"> Dark </option>
+    </select>
+    <hr>
+    <h2> Theme Selector</h2>
+    <p>
+        Select a theme
+    </p>
+    <p>
+        Once you've selected a theme, it will save on refresh.
+    </p>
+
+
+
+    <script>
+        function Selector() {
+            const themeSelect = document.getElementById("themeSelect");
+            const ThemeStylesheetLink = document.getElementById("ThemeStylesheetLink");
+            const currentTheme = localStorage.getItem("theme") || "default";
+
+            function selectTheme(theme) {
+            ThemeStylesheetLink.setAttribute("href", `./css/themes/${theme}.css`)
+            localStorage.setItem("theme", themeSelect.value)
+        }
+
+        themeSelect.addEventListener("change", () => {
+            selectTheme(themeSelect.value)
+        })
+
+        selectTheme("theme")
+
+     }
+
+     Selector();
+    </script>
+</body>
+</html>
